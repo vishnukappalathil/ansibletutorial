@@ -1,0 +1,22 @@
+---
+- host: all
+  become: true
+  tasks:
+
+  - name: update repository index for Ubuntu
+    apt: 
+      update_cache: yes
+    when: ansible_distribution_version == "ubuntu"
+
+  - name: install apache and php for ubuntu
+    apt:
+      name:
+        - apache2
+        - libapache2-mod-php 
+      state: latest
+    when: ansible_distribution == "ubuntu"
+
+   - name: update repository index for centOS
+     dnf: 
+       update_cache: yes
+     when: ansiab 
